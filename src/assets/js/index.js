@@ -1,3 +1,7 @@
+import TweenMax from "gsap"
+import MorphSVGPlugin from "./MorphSVGPlugin";
+import TweenLite from "./TweenLite";
+
 window.onload = function(){
   //======変数・関数定義======
   var resizeTimer;
@@ -120,39 +124,8 @@ window.onload = function(){
       onGreenArrow: function (event) {
         console.log("nottayo")
       }
-
-
-
     }
-
-
-
-
-
-
   })
-
-
-
-
-  //======vueインスタンス系======
-  // var cursor = new Vue({
-  //   el: '#cursor',
-  //   data: {
-  //     name: 'Vue.js',
-  //     top: 500,
-  //     left: 200,
-  //     height: 20,
-  //     width: 20
-  //   },
-  //   methods: {
-  //     moveCursor: function (event) {
-  //       this.name = event.pageX
-  //       this.top = event.pageY - (this.height / 2)
-  //       this.left = event.pageX - (this.width / 2)
-  //     }
-  //   }
-  // })
 
   var greenArrow = new Vue({
     el: ".js-green-arrow-link",
@@ -160,10 +133,30 @@ window.onload = function(){
       changeGreenArrow: function(event){
         console.log(event.pageX)
       }
-
     }
   })
 
+  MorphSVGPlugin.convertToPath("circle, rect, polygon");
 
+  var  select = function(s) {
+      return document.querySelector(s);
+    },
+    container = select('.container'),
+    mainSVG = select('#green-arrow-SVG')
+  
+  var tl = new TimelineMax({paused:true})
+  
+  tl.to("#green-arrow__subject1", 0.3, {morphSVG:"#green-arrow__top",fill:'#A1D782'}, '-=0.3')
+    .to("#green-arrow__subject3", 0.3, {morphSVG:"#green-arrow__middle",fill:'#A1D782'}, '-=0.3')
+    .to("#green-arrow__subject2", 0.3, {morphSVG:"#green-arrow__end",fill:'#A1D782'}, '-=0.3')
+    .to("#green-arrow__text", 0.3, {opacity:0,ease:"easeInOut"}, '-=0.3')
+  
+  mainSVG.addEventListener('mouseover', function() {
+    tl.play();
+  })
+  
+  mainSVG.addEventListener('mouseleave', function() {
+    tl.reverse();
+  })
 }
 

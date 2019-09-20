@@ -70,50 +70,24 @@ body {
   display: none;
 }
 
-.inner-color{
-  fill:#FFF;
-}
+// .inner-color{
+//   fill:#FFF;
+// }
 
-#green-arrows .outer-color{
-  fill:#A1D782;
-}
+// #green-arrows .outer-color{
+//   fill:#A1D782;
+// }
 
-#red-arrows .outer-color{
-  fill:#FF6347;
-}
-#blue-arrows .outer-color{
-  fill:#1E90FF;
-}
-#yellow-arrows .outer-color{
-  fill:#f8eb3c;
-}
+// #red-arrows .outer-color{
+//   fill:#FF6347;
+// }
+// #blue-arrows .outer-color{
+//   fill:#1E90FF;
+// }
+// #yellow-arrows .outer-color{
+//   fill:#f8eb3c;
+// }
 
-.green-arrow-link{
-  position:absolute;
-  top: calc(50% - 50px);
-  left: calc(25% - 100px);
-  transform: rotate(270deg);
-  z-index: 1000;
-}
-
-.blue-arrow-link{
-  position:absolute;
-  top: calc(75% - 50px);
-  left: calc(50% - 100px);
-  transform: rotate(180deg);
-}
-.red-arrow-link{
-  position:absolute;
-  top: calc(25% - 50px);
-  right: calc(50% - 100px);
-  transform: rotate(0deg);
-}
-.yellow-arrow-link{
-  position:absolute;
-  top: calc(50% - 50px);
-  right: calc(25% - 100px);
-  transform: rotate(90deg);
-}
 //////////////////svg definition///////////////////////
 
 
@@ -121,6 +95,11 @@ body {
 .text-center{
   text-align: center;
 }
+
+.visibility-hidden{
+  visibility:hidden;
+}
+
 
 .full-view-port{
   width: 100vw;
@@ -186,6 +165,78 @@ body {
   width: 3rem;
   height: 3rem;
 }
+
+////////////////////リンク用
+
+.green-arrow-link{
+  width: auto;
+  height: auto;
+}
+
+.arrow-SVG{
+  width: max-content;
+}
+
+.arrow-link{
+  z-index: 1000;
+}
+
+.green-arrow-link{
+  position:absolute;
+  top: calc(50% - 50px);
+  left: calc(25% - 100px);
+  transform: rotate(0deg);
+}
+
+.grn-st0{fill:#A1D782;stroke:#A1D782;stroke-width:5;stroke-miterlimit:10;}
+.grn-st1{fill:#FFFFFF;stroke:#A1D782;stroke-width:5;stroke-miterlimit:10;}
+.grn-st2{fill:#A1D782;}
+.grn-st3{font-family:'HiraKakuStd-W8-83pv-RKSJ-H';}
+.grn-st4{font-size:14.1627px;font-weight: 900;}
+.grn-st5{transition: all 300ms 0s ease;}
+
+
+
+.transition-all {
+transition: all .5 ease;
+}
+
+#green-arrow__top{
+visibility:hidden;
+}
+#green-arrow__middle{
+visibility:hidden;  
+}
+#green-arrow__end{
+visibility:hidden;  
+}
+
+
+
+
+.blue-arrow-link{
+  position:absolute;
+  top: calc(75% - 50px);
+  left: calc(50% - 100px);
+  transform: rotate(180deg);
+}
+.red-arrow-link{
+  position:absolute;
+  top: calc(25% - 50px);
+  right: calc(50% - 100px);
+  transform: rotate(0deg);
+}
+.yellow-arrow-link{
+  position:absolute;
+  top: calc(50% - 50px);
+  right: calc(25% - 100px);
+  transform: rotate(90deg);
+}
+
+
+
+
+
 
 .content{
   width: 40rem;
