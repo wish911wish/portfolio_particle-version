@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" id="jetpack_css-css" href="./assets/css/style.css" media="all"/>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+	<title>Document</title>
+</head>
+<body>
+
+<div class="SVGdefinition">
+	<svg display="none" @mouseover="onGreenArrow">
+		<defs>
+			<symbol id="green-arrows" class="arrow" >
+				<g>
+					<path class="inner-color" d="M10.8,101.5c-4,0-7.4-2.3-8.9-6.1C0.5,91.7,1.4,87.7,4.4,85L93.6,3.5c1.8-1.6,4-2.5,6.4-2.5s4.7,0.9,6.4,2.5L195.6,85c3,2.7,3.9,6.7,2.5,10.5c-1.5,3.7-4.8,6.1-8.9,6.1H10.8z"/>
+					<path d="M100,1.5c2.3,0,4.4,0.8,6.1,2.4l89.2,81.5c3.4,3.1,3.4,7.1,2.3,9.9s-3.8,5.7-8.4,5.7H10.8c-4.5,0-7.3-3-8.4-5.7s-1-6.8,2.3-9.9L93.9,3.9C95.6,2.4,97.7,1.5,100,1.5 M100,0.5c-2.4,0-4.8,0.9-6.7,2.6L4,84.6c-6.7,6.2-2.4,17.4,6.7,17.4h178.4c9.1,0,13.5-11.2,6.7-17.4L106.7,3.2C104.8,1.4,102.4,0.5,100,0.5L100,0.5z"/>
+					<path class="outer-color" d="M100,5.5c1.3,0,2.4,0.5,3.4,1.3l89.2,81.5c2.3,2.1,1.6,4.8,1.3,5.5c-0.3,0.7-1.5,3.2-4.7,3.2H10.8c-3.2,0-4.4-2.4-4.7-3.2c-0.3-0.7-1.1-3.4,1.3-5.5L96.6,6.8C97.6,6,98.7,5.5,100,5.5 M100,0.5c-2.4,0-4.8,0.9-6.7,2.6L4,84.6c-6.7,6.2-2.4,17.4,6.7,17.4h178.4c9.1,0,13.5-11.2,6.7-17.4L106.7,3.2C104.8,1.4,102.4,0.5,100,0.5L100,0.5z"/>
+				</g>
+			</symbol>
+		</defs>
+	</svg>
+	<svg display="none">
+		<defs>
+			<symbol id="red-arrows" class="arrow" >
+				<g>
+					<path class="inner-color" d="M10.8,101.5c-4,0-7.4-2.3-8.9-6.1C0.5,91.7,1.4,87.7,4.4,85L93.6,3.5c1.8-1.6,4-2.5,6.4-2.5s4.7,0.9,6.4,2.5L195.6,85c3,2.7,3.9,6.7,2.5,10.5c-1.5,3.7-4.8,6.1-8.9,6.1H10.8z"/>
+					<path d="M100,1.5c2.3,0,4.4,0.8,6.1,2.4l89.2,81.5c3.4,3.1,3.4,7.1,2.3,9.9s-3.8,5.7-8.4,5.7H10.8c-4.5,0-7.3-3-8.4-5.7s-1-6.8,2.3-9.9L93.9,3.9C95.6,2.4,97.7,1.5,100,1.5 M100,0.5c-2.4,0-4.8,0.9-6.7,2.6L4,84.6c-6.7,6.2-2.4,17.4,6.7,17.4h178.4c9.1,0,13.5-11.2,6.7-17.4L106.7,3.2C104.8,1.4,102.4,0.5,100,0.5L100,0.5z"/>
+					<path class="outer-color" d="M100,5.5c1.3,0,2.4,0.5,3.4,1.3l89.2,81.5c2.3,2.1,1.6,4.8,1.3,5.5c-0.3,0.7-1.5,3.2-4.7,3.2H10.8c-3.2,0-4.4-2.4-4.7-3.2c-0.3-0.7-1.1-3.4,1.3-5.5L96.6,6.8C97.6,6,98.7,5.5,100,5.5 M100,0.5c-2.4,0-4.8,0.9-6.7,2.6L4,84.6c-6.7,6.2-2.4,17.4,6.7,17.4h178.4c9.1,0,13.5-11.2,6.7-17.4L106.7,3.2C104.8,1.4,102.4,0.5,100,0.5L100,0.5z"/>
+				</g>
+			</symbol>
+		</defs>
+	</svg>
+	<svg display="none">
+		<defs>
+			<symbol id="blue-arrows" class="arrow" >
+				<g>
+					<path class="inner-color" d="M10.8,101.5c-4,0-7.4-2.3-8.9-6.1C0.5,91.7,1.4,87.7,4.4,85L93.6,3.5c1.8-1.6,4-2.5,6.4-2.5s4.7,0.9,6.4,2.5L195.6,85c3,2.7,3.9,6.7,2.5,10.5c-1.5,3.7-4.8,6.1-8.9,6.1H10.8z"/>
+					<path d="M100,1.5c2.3,0,4.4,0.8,6.1,2.4l89.2,81.5c3.4,3.1,3.4,7.1,2.3,9.9s-3.8,5.7-8.4,5.7H10.8c-4.5,0-7.3-3-8.4-5.7s-1-6.8,2.3-9.9L93.9,3.9C95.6,2.4,97.7,1.5,100,1.5 M100,0.5c-2.4,0-4.8,0.9-6.7,2.6L4,84.6c-6.7,6.2-2.4,17.4,6.7,17.4h178.4c9.1,0,13.5-11.2,6.7-17.4L106.7,3.2C104.8,1.4,102.4,0.5,100,0.5L100,0.5z"/>
+					<path class="outer-color" d="M100,5.5c1.3,0,2.4,0.5,3.4,1.3l89.2,81.5c2.3,2.1,1.6,4.8,1.3,5.5c-0.3,0.7-1.5,3.2-4.7,3.2H10.8c-3.2,0-4.4-2.4-4.7-3.2c-0.3-0.7-1.1-3.4,1.3-5.5L96.6,6.8C97.6,6,98.7,5.5,100,5.5 M100,0.5c-2.4,0-4.8,0.9-6.7,2.6L4,84.6c-6.7,6.2-2.4,17.4,6.7,17.4h178.4c9.1,0,13.5-11.2,6.7-17.4L106.7,3.2C104.8,1.4,102.4,0.5,100,0.5L100,0.5z"/>
+				</g>
+			</symbol>
+		</defs>
+	</svg>
+	<svg display="none">
+		<defs>
+			<symbol id="yellow-arrows" class="arrow" >
+				<g>
+					<path class="inner-color" d="M10.8,101.5c-4,0-7.4-2.3-8.9-6.1C0.5,91.7,1.4,87.7,4.4,85L93.6,3.5c1.8-1.6,4-2.5,6.4-2.5s4.7,0.9,6.4,2.5L195.6,85c3,2.7,3.9,6.7,2.5,10.5c-1.5,3.7-4.8,6.1-8.9,6.1H10.8z"/>
+					<path d="M100,1.5c2.3,0,4.4,0.8,6.1,2.4l89.2,81.5c3.4,3.1,3.4,7.1,2.3,9.9s-3.8,5.7-8.4,5.7H10.8c-4.5,0-7.3-3-8.4-5.7s-1-6.8,2.3-9.9L93.9,3.9C95.6,2.4,97.7,1.5,100,1.5 M100,0.5c-2.4,0-4.8,0.9-6.7,2.6L4,84.6c-6.7,6.2-2.4,17.4,6.7,17.4h178.4c9.1,0,13.5-11.2,6.7-17.4L106.7,3.2C104.8,1.4,102.4,0.5,100,0.5L100,0.5z"/>
+					<path class="outer-color" d="M100,5.5c1.3,0,2.4,0.5,3.4,1.3l89.2,81.5c2.3,2.1,1.6,4.8,1.3,5.5c-0.3,0.7-1.5,3.2-4.7,3.2H10.8c-3.2,0-4.4-2.4-4.7-3.2c-0.3-0.7-1.1-3.4,1.3-5.5L96.6,6.8C97.6,6,98.7,5.5,100,5.5 M100,0.5c-2.4,0-4.8,0.9-6.7,2.6L4,84.6c-6.7,6.2-2.4,17.4,6.7,17.4h178.4c9.1,0,13.5-11.2,6.7-17.4L106.7,3.2C104.8,1.4,102.4,0.5,100,0.5L100,0.5z"/>
+				</g>
+			</symbol>
+		</defs>
+	</svg>
+	<svg display="none">
+		<defs>
+			<symbol id="template-arrows" class="arrow" >
+				<g>
+					<path class="inner-color" d="M10.8,101.5c-4,0-7.4-2.3-8.9-6.1C0.5,91.7,1.4,87.7,4.4,85L93.6,3.5c1.8-1.6,4-2.5,6.4-2.5s4.7,0.9,6.4,2.5L195.6,85c3,2.7,3.9,6.7,2.5,10.5c-1.5,3.7-4.8,6.1-8.9,6.1H10.8z"/>
+					<path d="M100,1.5c2.3,0,4.4,0.8,6.1,2.4l89.2,81.5c3.4,3.1,3.4,7.1,2.3,9.9s-3.8,5.7-8.4,5.7H10.8c-4.5,0-7.3-3-8.4-5.7s-1-6.8,2.3-9.9L93.9,3.9C95.6,2.4,97.7,1.5,100,1.5 M100,0.5c-2.4,0-4.8,0.9-6.7,2.6L4,84.6c-6.7,6.2-2.4,17.4,6.7,17.4h178.4c9.1,0,13.5-11.2,6.7-17.4L106.7,3.2C104.8,1.4,102.4,0.5,100,0.5L100,0.5z"/>
+					<path class="outer-color" d="M100,5.5c1.3,0,2.4,0.5,3.4,1.3l89.2,81.5c2.3,2.1,1.6,4.8,1.3,5.5c-0.3,0.7-1.5,3.2-4.7,3.2H10.8c-3.2,0-4.4-2.4-4.7-3.2c-0.3-0.7-1.1-3.4,1.3-5.5L96.6,6.8C97.6,6,98.7,5.5,100,5.5 M100,0.5c-2.4,0-4.8,0.9-6.7,2.6L4,84.6c-6.7,6.2-2.4,17.4,6.7,17.4h178.4c9.1,0,13.5-11.2,6.7-17.4L106.7,3.2C104.8,1.4,102.4,0.5,100,0.5L100,0.5z"/>
+				</g>
+			</symbol>
+		</defs>
+	</svg>
+</div>
+
+<!-- マウスカーソルをVueで動かすところから！！！！！ -->
+<div id="app" @mousemove="moveCursor" >
+	<div class="cursor"  v-bind:style="{ top: top + 'px', left: left + 'px', height: height + 'px', width: width + 'px' }">
+		<div class="cursor__container">
+			<div class="cursor__dot dot-red"></div>
+			<div class="cursor__dot dot-green"></div>
+			<div class="cursor__dot dot-yellow"></div>
+			<div class="cursor__dot dot-blue"></div>
+		</div>
+	</div>
+	<section class="section top">
+		<div class="content">
+			<div class="top">
+				<div class="text-center">WELCOME!!!!!<br>Nozomi Kawakami's portforio</div>
+			</div>		
+		</div>
+		<div class="pageLink full-view-port" >
+			<!-- アニメーションは以下を参 -->
+				<!-- https://greensock.com/docs/v2/Plugins/MorphSVGPlugin/static.convertToPath()?ct=1568643174 -->
+				<!-- 一つの丸が矢印の部品にそれぞれ変化する形にする。大きい丸から矢印の先端に、大きいまるから矢印の真ん中に、大きい丸から矢印の後ろに、といった感じで。 -->
+			<div class="green-arrow-link js-green-arrow-link" >
+				<svg x="0" y="0" width="200px" height="102px" viewBox="0 0 200 100">
+					<use x="0" y="0" width="200px" height="102px" xlink:href="#green-arrows"></use>
+				</svg>
+			</div>
+			<div class="red-arrow-link" >
+				<svg  x="0" y="0" width="200px" height="102px" viewBox="0 0 200 100">
+					<use x="0" y="0" width="200px" height="102px" xlink:href="#red-arrows"></use>
+				</svg>
+			</div>
+			<div class="blue-arrow-link">
+				<svg  x="0" y="0" width="200px" height="102px" viewBox="0 0 200 100">
+					<use x="0" y="0" width="200px" height="102px" xlink:href="#blue-arrows"></use>
+				</svg>
+			</div>
+			<div class="yellow-arrow-link">
+				<svg  x="0" y="0" width="200px" height="102px" viewBox="0 0 200 100">
+					<use x="0" y="0" width="200px" height="102px" xlink:href="#yellow-arrows"></use>
+				</svg>
+			</div>
+		</div>
+	</section>
+	<section class="section about">
+		<div>
+			<div container="text-container">
+				<h2>ABOUT見出し</h2>
+				<p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+			</div>
+		</div>
+	</section>
+	<section class="section career">
+		<div>
+			<div container="text-container">
+				<h2>CAREER見出し</h2>
+				<p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+			</div>
+		</div>		
+	</section>
+	<section class="section works">
+		<div>
+			<div container="text-container">
+				<h2>WORKS見出し</h2>
+				<p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+			</div>
+		</div>
+	</section>
+	<section class="section contact">
+		<div>
+			<div container="text-container">
+				<h2>CONTACT見出し</h2>
+				<p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+			</div>
+		</div>
+	</section>
+</div>	
+<div id="canvas-container">
+	<canvas id="canvas"></canvas>
+</div>
+
+
+<script src="/assets/js/index.js"></script>
+</body>
+</html>
