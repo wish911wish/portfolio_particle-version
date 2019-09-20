@@ -131,7 +131,6 @@ window.onload = function(){
     el: ".js-green-arrow-link",
     methods: {
       changeGreenArrow: function(event){
-        console.log(event.pageX)
       }
     }
   })
@@ -140,23 +139,32 @@ window.onload = function(){
 
   var  select = function(s) {
       return document.querySelector(s);
-    },
-    container = select('.container'),
-    mainSVG = select('#green-arrow-SVG')
+  },
+
+  container = select('.container'),
+  mainSVG = select('#green-arrow-SVG')
   
-  var tl = new TimelineMax({paused:true})
+  var ColorTimeline = function(colorName, colorValue){
+    var tl = new TimelineMax({paused:true})
   
-  tl.to("#green-arrow__subject1", 0.3, {morphSVG:"#green-arrow__top",fill:'#A1D782'}, '-=0.3')
-    .to("#green-arrow__subject3", 0.3, {morphSVG:"#green-arrow__middle",fill:'#A1D782'}, '-=0.3')
-    .to("#green-arrow__subject2", 0.3, {morphSVG:"#green-arrow__end",fill:'#A1D782'}, '-=0.3')
-    .to("#green-arrow__text", 0.3, {opacity:0,ease:"easeInOut"}, '-=0.3')
+    tl.to(`#${colorName}-arrow__subject1`, 0.3, {morphSVG:`#${colorName}-arrow__top`,fill: colorValue}, '-=0.3')
+      .to(`#${colorName}-arrow__subject3`, 0.3, {morphSVG:`#${colorName}-arrow__middle`,fill: colorValue}, '-=0.3')
+      .to(`#${colorName}-arrow__subject2`, 0.3, {morphSVG:`#${colorName}-arrow__end`,fill: colorValue}, '-=0.3')
+      .to(`#${colorName}-arrow__text`, 0.3, {opacity:0,ease:"easeInOut"}, '-=0.3')
+    
+    return tl
+  }
+
+  var greenTl = new ColorTimeline('green', '#A1D782')
   
+  
+
   mainSVG.addEventListener('mouseover', function() {
-    tl.play();
+    greenTl.play();
   })
   
   mainSVG.addEventListener('mouseleave', function() {
-    tl.reverse();
+    greenTl.reverse();
   })
 }
 
