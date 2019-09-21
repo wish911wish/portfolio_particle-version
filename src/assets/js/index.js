@@ -141,7 +141,7 @@ window.onload = function(){
   var ColorTimeline = function(colorName, colorValue){
     var tl = new TimelineMax({paused:true})
   
-    tl.to(`#${colorName}-arrow__subject1`, 0.3, {morphSVG:`#${colorName}-arrow__top`,fill: colorValue}, '-=0.3')
+    tl.to(`#${colorName}-arrow__subject1`, 0.3, {morphSVG:`#${colorName}-arrow__top`,fill: colorValue})
       .to(`#${colorName}-arrow__subject3`, 0.3, {morphSVG:`#${colorName}-arrow__middle`,fill: colorValue}, '-=0.3')
       .to(`#${colorName}-arrow__subject2`, 0.3, {morphSVG:`#${colorName}-arrow__end`,fill: colorValue}, '-=0.3')
       .to(`#${colorName}-arrow__text`, 0.3, {opacity:0,ease:"easeInOut"}, '-=0.3')
@@ -157,9 +157,10 @@ window.onload = function(){
     })
   
     obj.addEventListener('mouseleave', function() {
-      tl.reverse();
+      if (tl.time() > 0){
+        tl.reverse();
+      }
     })
-    return obj
   }
 
   var redMainSVG = new colorObj('#red-arrow-SVG', 'red', '#FF6347')
