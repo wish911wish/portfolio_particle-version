@@ -148,9 +148,13 @@ window.onload = function(){
     return tl
   }
 
-  var colorObj = function(objID, colorName, colorValue){
-    var obj = select(objID)
-    var tl = new ColorTimeline(colorName, colorValue)
+  var colorObj = function(num){
+    var objctID = ["#green-arrow-SVG","#blue-arrow-SVG","#red-arrow-SVG","#yellow-arrow-SVG"]
+    var colorName = ["green","blue","red","yellow"]
+    var colorValue = ["#A1D782","#1E90FF","#FF6347","#f8eb3c"]
+    var translateValue = [{x:0,y:-100},{x:-100,y:-200},{x:-200,y:-100},{x:-100,y:0}]
+    var obj = select(objctID[num])
+    var tl = new ColorTimeline(colorName[num], colorValue[num])
   
     obj.addEventListener('mouseover', function() {
       tl.play();
@@ -161,12 +165,22 @@ window.onload = function(){
         tl.reverse();
       }
     })
+
+    obj.addEventListener('click', function() {
+      var app = document.getElementById("app")
+      app.setAttribute("style",`transform: translate(${translateValue[num].x}vw, ${translateValue[num].y}vh);`)
+    })
   }
 
-  var redMainSVG = new colorObj('#red-arrow-SVG', 'red', '#FF6347')
-  var greenMainSVG = new colorObj('#green-arrow-SVG', 'green', '#A1D782')
-  var blueMainSVG = new colorObj('#blue-arrow-SVG', 'blue', '#1E90FF')
-  var yellowMainSVG = new colorObj('#yellow-arrow-SVG', 'yellow', '#f8eb3c')
+  var redMainSVG = new colorObj(0)
+  var greenMainSVG = new colorObj(1)
+  var blueMainSVG = new colorObj(2)
+  var yellowMainSVG = new colorObj(3)
+
+  document.getElementById("home-button").addEventListener('click', function() {
+    var app = document.getElementById("app")
+    app.setAttribute("style",`transform: translate(-100vw, -100vh);`)
+  })
 }
 
 

@@ -62,7 +62,7 @@ button{
 
 body {
   position: relative;
-  cursor: none;
+  // cursor: none;
 }
 /////////////////reset css///////////////////////
 
@@ -109,17 +109,18 @@ body {
   left: 0;
 }
 
-.cursor{
-  position: absolute;
-  cursor: none;
-  pointer-events: none;
-  animation: spin 1.5s linear infinite;
-  z-index: 1500;
-}
+// .cursor{
+//   position: absolute;
+//   cursor: none;
+//   pointer-events: none;
+//   animation: spin 1.5s linear infinite;
+//   z-index: 1500;
+//   transform: translate(-100vw, -100vh);
+// }
 
-.cursor {
-  pointer-events: none;
-}
+// .cursor {
+//   pointer-events: none;
+// }
 
 .cursor__container{
   position: relative;
@@ -165,6 +166,22 @@ body {
   width: 3rem;
   height: 3rem;
 }
+////////////////////ページ全体のwidth height
+body{
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+#app{
+  transform: translate(-100vw, -100vh);
+  display: grid;
+  grid-template-columns: 100vw 100vw 100vw;
+  grid-template-rows: 100vh 100vh 100vh;
+  width: 300vw;
+  height: 300vh;
+}
+
 
 ////////////////////リンク用
 .pageLink{
@@ -184,6 +201,7 @@ body {
 }
 
 .arrow-link{
+  cursor: pointer;
   z-index: 1000;
   position: absolute;
 }
@@ -269,14 +287,19 @@ visibility:hidden;
 }
 
 .top{
-  width: 100%;
-  height: 100%;
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
   font-size: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
+.transition-transform-long {
+  transition: transform 1s ease;
+  transition: transform 1s ease, -webkit-transform 1s ease;
+}
 
 #canvas{
   position: absolute;
@@ -284,14 +307,17 @@ visibility:hidden;
   left: 0;
   width: 100%;
   height: 100%;
+  transform: translate(-100vw, -100vh);
 }
 
 #canvas-container{
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
   width: 100vw;
   height: 100vh;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 100vh;
+  left: 100vw;
   z-index: -1;
 }
 
@@ -300,7 +326,14 @@ visibility:hidden;
   height: 100vh;
 }
 
-
-path {
+#home-button{
+  position: absolute;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color: darkgrey;
   cursor: pointer;
+  top: 10rem;
+  left: 10rem;
+  border: 1rem solid;
 }
