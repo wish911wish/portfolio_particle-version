@@ -10,11 +10,11 @@ window.onload = function(){
   var canvas = document.querySelector('#canvas');
   var center = {};
   var ctx = canvas.getContext('2d');
-  var density = 20;
+  var density = 10;
   var particles = [];
   var colors = ['#FF634733','#a1d78233','#f8eb3c33','#1E90FF33']
-  var baseSize = 10
-  var baseSpeed = 20
+  var baseSize = 5
+  var baseSpeed = 40
 
 
   var Particle = function () {
@@ -39,20 +39,19 @@ window.onload = function(){
       this.position.x += this.vec.x;
       this.position.y += this.vec.y;
 
-      if(this.position.x > canvas.width + 10) {
-        this.position.x = -5;
-      } else if(this.position.x < 0 - 10) {
-        this.position.x = canvas.width + 5;
-      } else if(this.position.y > canvas.height + 10) {
-        this.position.y = -5;
-      } else if(this.position.y < 0 - 10) {
-        this.position.y = canvas.height + 5;
+      if(this.position.x > canvas.width + 50) {
+        this.position.x = -50;
+      } else if(this.position.x < 0 - 50) {
+        this.position.x = canvas.width + 50;
+      } else if(this.position.y > canvas.height + 50) {
+        this.position.y = -50;
+      } else if(this.position.y < 0 - 50) {
+        this.position.y = canvas.height + 50;
       }
     },
 
     draw: function(){
       ctx.fillStyle = this.color;
-      // ctx.fillStyle = "rgba(" + [0, 0, 255, 0.5] + ")";
       ctx.beginPath();
       ctx.arc(this.position.x, this.position.y, this.size, 0, 2 * Math.PI, false);
       ctx.fill();
@@ -92,7 +91,6 @@ window.onload = function(){
   }
 
   //======アプリケーション処理======
-  // setWindowSize()
   initParticles()
  
   //======イベントリスナー系======

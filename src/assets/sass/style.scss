@@ -167,10 +167,16 @@ body {
 }
 
 ////////////////////リンク用
+.pageLink{
+  display: grid;
+  grid-template-rows: 25vh 50vh 25vh;
+  grid-template-columns:  25vw 50vw 25vw;
+}
 
-.green-arrow-link{
-  width: auto;
-  height: auto;
+.arrow-container{
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
+  position: relative;
 }
 
 .arrow-SVG{
@@ -179,13 +185,13 @@ body {
 
 .arrow-link{
   z-index: 1000;
+  position: absolute;
 }
 
 ///////////green arrow
 .green-arrow-link{
-  position:absolute;
-  top: calc(50% - 50px);
-  left: calc(25% - 100px);
+  top: calc(50% - 76px);
+  left: calc(0% - 150px);
   transform: rotate(0deg);
 }
 
@@ -200,10 +206,9 @@ body {
 
 ///////////red arrow
 .red-arrow-link{
-  position:absolute;
-  top: calc(50% - 50px);
-  left: calc(25% - 100px);
-  transform: rotate(270deg);
+  top: calc(50% - 76px);
+  left: calc(100% - 150px);
+  transform: rotate(180deg);
 }
 
 .red-st0{fill:#FF6347;stroke:#FF6347;stroke-width:5;stroke-miterlimit:10;}
@@ -215,9 +220,8 @@ body {
 
 ///////////blue arrow
 .blue-arrow-link{
-  position:absolute;
-  top: calc(50% - 50px);
-  left: calc(25% - 100px);
+  top: calc(100% - 76px);
+  left: calc(50% - 150px);
   transform: rotate(270deg);
 }
 
@@ -230,10 +234,9 @@ body {
 
 ///////////yellow arrow
 .yellow-arrow-link{
-  position:absolute;
-  top: calc(50% - 50px);
-  left: calc(25% - 100px);
-  transform: rotate(270deg);
+  top: calc(0% - 76px);
+  left: calc(50% - 150px);
+  transform: rotate(90deg);
 }
 
 .yellow-st0{fill:#f8eb3c;stroke:#f8eb3c;stroke-width:5;stroke-miterlimit:10;}
@@ -257,33 +260,6 @@ visibility:hidden;
 #green-arrow__end{
 visibility:hidden;  
 }
-
-
-
-
-.blue-arrow-link{
-  position:absolute;
-  top: calc(75% - 50px);
-  left: calc(50% - 100px);
-  transform: rotate(180deg);
-}
-.red-arrow-link{
-  position:absolute;
-  top: calc(25% - 50px);
-  right: calc(50% - 100px);
-  transform: rotate(0deg);
-}
-.yellow-arrow-link{
-  position:absolute;
-  top: calc(50% - 50px);
-  right: calc(25% - 100px);
-  transform: rotate(90deg);
-}
-
-
-
-
-
 
 .content{
   width: 40rem;
