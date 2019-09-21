@@ -134,16 +134,12 @@ window.onload = function(){
       }
     }
   })
-
   MorphSVGPlugin.convertToPath("circle, rect, polygon");
 
-  var  select = function(s) {
-      return document.querySelector(s);
-  },
+  var select = function(s) {
+    return document.querySelector(s);
+  }
 
-  container = select('.container'),
-  mainSVG = select('#green-arrow-SVG')
-  
   var ColorTimeline = function(colorName, colorValue){
     var tl = new TimelineMax({paused:true})
   
@@ -151,20 +147,27 @@ window.onload = function(){
       .to(`#${colorName}-arrow__subject3`, 0.3, {morphSVG:`#${colorName}-arrow__middle`,fill: colorValue}, '-=0.3')
       .to(`#${colorName}-arrow__subject2`, 0.3, {morphSVG:`#${colorName}-arrow__end`,fill: colorValue}, '-=0.3')
       .to(`#${colorName}-arrow__text`, 0.3, {opacity:0,ease:"easeInOut"}, '-=0.3')
-    
     return tl
   }
 
-  var greenTl = new ColorTimeline('green', '#A1D782')
+  var colorObj = function(objID, colorName, colorValue){
+    var obj = select(objID)
+    var tl = new ColorTimeline(colorName, colorValue)
   
+    obj.addEventListener('mouseover', function() {
+      tl.play();
+    })
   
+    obj.addEventListener('mouseleave', function() {
+      tl.reverse();
+    })
+    return obj
+  }
 
-  mainSVG.addEventListener('mouseover', function() {
-    greenTl.play();
-  })
-  
-  mainSVG.addEventListener('mouseleave', function() {
-    greenTl.reverse();
-  })
+  var redMainSVG = new colorObj('#red-arrow-SVG', 'red', '#FF6347')
+  var greenMainSVG = new colorObj('#green-arrow-SVG', 'green', '#A1D782')
+  var blueMainSVG = new colorObj('#blue-arrow-SVG', 'blue', '#1E90FF')
+  var yellowMainSVG = new colorObj('#yellow-arrow-SVG', 'yellow', '#f8eb3c')
 }
+
 
