@@ -1,3 +1,7 @@
+import TweenMax from "gsap"
+import MorphSVGPlugin from "./MorphSVGPlugin";
+import TweenLite from "./TweenLite";
+
 window.onload = function(){
   //======変数・関数定義======
   var resizeTimer;
@@ -6,11 +10,11 @@ window.onload = function(){
   var canvas = document.querySelector('#canvas');
   var center = {};
   var ctx = canvas.getContext('2d');
-  var density = 20;
+  var density = 10;
   var particles = [];
   var colors = ['#FF634733','#a1d78233','#f8eb3c33','#1E90FF33']
-  var baseSize = 10
-  var baseSpeed = 20
+  var baseSize = 5
+  var baseSpeed = 40
 
 
   var Particle = function () {
@@ -35,20 +39,19 @@ window.onload = function(){
       this.position.x += this.vec.x;
       this.position.y += this.vec.y;
 
-      if(this.position.x > canvas.width + 10) {
-        this.position.x = -5;
-      } else if(this.position.x < 0 - 10) {
-        this.position.x = canvas.width + 5;
-      } else if(this.position.y > canvas.height + 10) {
-        this.position.y = -5;
-      } else if(this.position.y < 0 - 10) {
-        this.position.y = canvas.height + 5;
+      if(this.position.x > canvas.width + 50) {
+        this.position.x = -50;
+      } else if(this.position.x < 0 - 50) {
+        this.position.x = canvas.width + 50;
+      } else if(this.position.y > canvas.height + 50) {
+        this.position.y = -50;
+      } else if(this.position.y < 0 - 50) {
+        this.position.y = canvas.height + 50;
       }
     },
 
     draw: function(){
       ctx.fillStyle = this.color;
-      // ctx.fillStyle = "rgba(" + [0, 0, 255, 0.5] + ")";
       ctx.beginPath();
       ctx.arc(this.position.x, this.position.y, this.size, 0, 2 * Math.PI, false);
       ctx.fill();
@@ -88,7 +91,6 @@ window.onload = function(){
   }
 
   //======アプリケーション処理======
-  // setWindowSize()
   initParticles()
  
   //======イベントリスナー系======
@@ -120,50 +122,51 @@ window.onload = function(){
       onGreenArrow: function (event) {
         console.log("nottayo")
       }
-
-
-
     }
-
-
-
-
-
-
   })
-
-
-
-
-  //======vueインスタンス系======
-  // var cursor = new Vue({
-  //   el: '#cursor',
-  //   data: {
-  //     name: 'Vue.js',
-  //     top: 500,
-  //     left: 200,
-  //     height: 20,
-  //     width: 20
-  //   },
-  //   methods: {
-  //     moveCursor: function (event) {
-  //       this.name = event.pageX
-  //       this.top = event.pageY - (this.height / 2)
-  //       this.left = event.pageX - (this.width / 2)
-  //     }
-  //   }
-  // })
 
   var greenArrow = new Vue({
     el: ".js-green-arrow-link",
     methods: {
       changeGreenArrow: function(event){
-        console.log(event.pageX)
       }
-
     }
   })
+  MorphSVGPlugin.convertToPath("circle, rect, polygon");
 
+  var select = function(s) {
+    return document.querySelector(s);
+  }
 
+  var ColorTimeline = function(colorName, colorValue){
+    var tl = new TimelineMax({paused:true})
+  
+    tl.to(`#${colorName}-arrow__subject1`, 0.3, {morphSVG:`#${colorName}-arrow__top`,fill: colorValue})
+      .to(`#${colorName}-arrow__subject3`, 0.3, {morphSVG:`#${colorName}-arrow__middle`,fill: colorValue}, '-=0.3')
+      .to(`#${colorName}-arrow__subject2`, 0.3, {morphSVG:`#${colorName}-arrow__end`,fill: colorValue}, '-=0.3')
+      .to(`#${colorName}-arrow__text`, 0.3, {opacity:0,ease:"easeInOut"}, '-=0.3')
+    return tl
+  }
+
+  var colorObj = function(objID, colorName, colorValue){
+    var obj = select(objID)
+    var tl = new ColorTimeline(colorName, colorValue)
+  
+    obj.addEventListener('mouseover', function() {
+      tl.play();
+    })
+  
+    obj.addEventListener('mouseleave', function() {
+      if (tl.time() > 0){
+        tl.reverse();
+      }
+    })
+  }
+
+  var redMainSVG = new colorObj('#red-arrow-SVG', 'red', '#FF6347')
+  var greenMainSVG = new colorObj('#green-arrow-SVG', 'green', '#A1D782')
+  var blueMainSVG = new colorObj('#blue-arrow-SVG', 'blue', '#1E90FF')
+  var yellowMainSVG = new colorObj('#yellow-arrow-SVG', 'yellow', '#f8eb3c')
 }
+
 
