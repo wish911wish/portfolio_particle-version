@@ -169,15 +169,17 @@ window.onload = function(){
     obj.addEventListener('click', function() {
       var app = document.getElementById("app")
       app.setAttribute("style",`transform: translate(${translateValue[num].x}vw, ${translateValue[num].y}vh);`)
-      document.getElementById("overlay").classList.add("active")
-      document.getElementById(`${colorName[num]}-rectangle`).classList.add("up")
+      var overlayObj = document.getElementById("overlay")
+      var translateObj = document.getElementById(`${colorName[num]}-rectangle`)
+      overlayObj.classList.add("active")
+      translateObj.classList.add("up")
       setTimeout(function(){
-        document.getElementById(`${colorName[num]}-rectangle`).classList.add("after")
+        translateObj.classList.add("up-after")
       },450)
       setTimeout(function(){
-        document.getElementById(`${colorName[num]}-rectangle`).classList.remove("after","up")
-        document.getElementById("overlay").classList.remove("active")
-      },800)
+        overlayObj.classList.remove("active")
+        translateObj.classList.remove("up")
+      },700)
     })
   }
 
@@ -189,6 +191,17 @@ window.onload = function(){
   document.getElementById("home-button").addEventListener('click', function() {
     var app = document.getElementById("app")
     app.setAttribute("style",`transform: translate(-100vw, -100vh);`)
+    var afterObj = document.getElementsByClassName("up-after")[0]
+    var overlayObj = document.getElementById("overlay")
+    overlayObj.classList.add("active")
+    afterObj.classList.add("back")
+    setTimeout(function(){
+      afterObj.classList.add("back-after")
+    },450)
+    setTimeout(function(){
+      afterObj.classList.remove("up-after", "back", "back-after")
+      overlayObj.classList.remove("active")
+    },450)
   })
 }
 

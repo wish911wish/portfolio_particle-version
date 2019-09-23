@@ -293,6 +293,7 @@ body{
   width: 100%;
   height: 100%;
   position: absolute;
+  transition: 0.25s;
 }
 
 #green-rectangle{
@@ -302,20 +303,14 @@ body{
   &.up{
     transform: translate(-100%,0);
   }
-  &.after{
+  &.up-after{
     transform: translate(-200%,0);
   }
-}
-
-#green-rectangle{
-  top: 0;
-  left: 100%;
-  background-color: #A1D782;
-  &.up{
+  &.up-after.back{
     transform: translate(-100%,0);
   }
-  &.after{
-    transform: translate(-200%,0);
+  &.back.back-after{
+    transform: translate(0,0);
   }
 }
 
@@ -326,8 +321,14 @@ body{
   &.up{
     transform: translate(0,100%);
   }
-  &.after{
+  &.up-after{
     transform: translate(0,200%);
+  }
+  &.up-after.back{
+    transform: translate(0,100%);
+  }
+  &.back.back-after{
+    transform: translate(0,0);
   }
 }
 
@@ -338,8 +339,14 @@ body{
   &.up{
     transform: translate(100%,0);
   }
-  &.after{
+  &.up-after{
     transform: translate(200%,0);
+  }
+  &.up-after.back{
+    transform: translate(100%,0);
+  }
+  &.back.back-after{
+    transform: translate(0,0);
   }
 }
 
@@ -350,8 +357,14 @@ body{
   &.up{
     transform: translate(0,-100%);
   }
-  &.after{
+  &.up-after{
     transform: translate(0,-200%);
+  }
+  &.up-after.back{
+    transform: translate(0,-100%);
+  }
+  &.back.back-after{
+    transform: translate(0,0);
   }
 }
 
