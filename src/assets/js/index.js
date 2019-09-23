@@ -170,14 +170,14 @@ window.onload = function(){
       var app = document.getElementById("app")
       app.setAttribute("style",`transform: translate(${translateValue[num].x}vw, ${translateValue[num].y}vh);`)
       document.getElementById("overlay").classList.add("active")
-      document.getElementById("green-rectangle").classList.add("up")
+      document.getElementById(`${colorName[num]}-rectangle`).classList.add("up")
       setTimeout(function(){
-        document.getElementById("green-rectangle").classList.add("after")
+        document.getElementById(`${colorName[num]}-rectangle`).classList.add("after")
       },450)
       setTimeout(function(){
-        document.getElementById("green-rectangle").classList.remove("after","up")
+        document.getElementById(`${colorName[num]}-rectangle`).classList.remove("after","up")
         document.getElementById("overlay").classList.remove("active")
-      },700)
+      },800)
     })
   }
 
