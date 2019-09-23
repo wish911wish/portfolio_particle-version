@@ -264,6 +264,44 @@ body{
 .yellow-st4{font-size:14.1627px;font-weight: 900;}
 .yellow-st5{transition: all 300ms 0s ease;}
 
+///////////over lay
+#overlay{
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 2000;
+}
+
+#overlay.active{
+  visibility: visible;
+}
+
+.up{
+  transform: translate(-100%,0);
+  transition-duration: 0.25s
+}
+
+.after{
+  transform: translate(-200%,0);
+  transition-duration: 0.25s
+}
+
+#green-rectangle{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background-color: #A1D782;
+  // transform: translate3d(0,0,0);
+}
+
 .transition-all {
 transition: all .5 ease;
 }
@@ -297,8 +335,9 @@ visibility:hidden;
 }
 
 .transition-transform-long {
-  transition: transform 1s ease;
-  transition: transform 1s ease, -webkit-transform 1s ease;
+  // transition: transform 1s ease;
+  // transition: transform 1s ease, -webkit-transform 1s ease;
+  transition-delay: 0.25s;
 }
 
 #canvas{
