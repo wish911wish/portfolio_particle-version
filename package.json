@@ -32,7 +32,7 @@
   "devDependencies": {
     "@babel/core": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
-    "browser-sync": "^2.26.7",
+    "browser-sync": "^2.27.10",
     "cpx": "^1.5.0",
     "ejs-cli": "^2.1.0",
     "imagemin": "^7.0.0",
